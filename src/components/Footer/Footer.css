@@ -1,0 +1,164 @@
+.footer {
+    background: var(--color-surface);
+    padding: 80px 0 40px;
+    border-top: 1px solid var(--color-glass-border);
+    position: relative;
+}
+
+/* Content */
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 60px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--color-glass-border);
+}
+
+.footer-brand h3 {
+    font-size: 1.3rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+}
+
+.footer-brand p {
+    font-size: 0.95rem;
+}
+
+/* Links */
+.footer-links {
+    display: flex;
+    gap: 30px;
+}
+
+.footer-links a {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color var(--transition-fast);
+    position: relative;
+}
+
+.footer-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--color-primary);
+    transition: width var(--transition-fast);
+}
+
+.footer-links a:hover {
+    color: var(--color-primary);
+}
+
+.footer-links a:hover::after {
+    width: 100%;
+}
+
+/* Socials */
+.footer-socials {
+    display: flex;
+    gap: 12px;
+}
+
+.footer-socials a {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg);
+    border: 1px solid var(--color-glass-border);
+    color: var(--color-text-muted);
+    font-size: 1.2rem;
+    transition: all var(--transition-fast);
+}
+
+.footer-socials a:hover {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-bg);
+}
+
+/* Bottom */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-bottom .mono {
+    font-size: 0.7rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.1em;
+}
+
+.made-with {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+}
+
+.heart {
+    color: var(--color-primary);
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Back to Top - Floating Button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--color-primary);
+    border: none;
+    color: var(--color-bg);
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(255, 61, 0, 0.4);
+    transition: all var(--transition-fast);
+}
+
+.back-to-top:hover {
+    box-shadow: 0 8px 30px rgba(255, 61, 0, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .footer-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .footer-links {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-bottom {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .back-to-top {
+        bottom: 20px;
+        left: 20px;
+        width: 45px;
+        height: 45px;
+    }
+}

@@ -96,12 +96,14 @@
 .project-card {
     background: var(--color-surface);
     border: 1px solid var(--color-glass-border);
-    border-radius: 16px;
+    border-radius: 8px;
     overflow: hidden;
     height: 100%;
     transition: all 0.3s ease;
     cursor: pointer;
-    /* Clickable */
+    color: inherit;
+    font: inherit;
+    text-align: left;
 }
 
 .project-card:hover {
@@ -351,7 +353,7 @@
     max-width: 800px;
     background: var(--color-surface);
     border: 1px solid var(--color-glass-border);
-    border-radius: 20px;
+    border-radius: 8px;
     overflow: hidden;
     position: relative;
     max-height: 90vh;
@@ -502,5 +504,168 @@
 
     .skill-icon-b {
         font-size: 2rem;
+    }
+}
+
+.project-title,
+.project-role,
+.project-summary,
+.project-evidence,
+.project-privacy-status,
+.project-archive-label {
+    display: block;
+}
+
+.project-title {
+    color: var(--color-text);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.project-role {
+    color: var(--color-primary);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    margin-bottom: 14px;
+}
+
+.project-summary {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 18px;
+}
+
+.project-evidence {
+    color: var(--color-text-muted);
+    font-size: 0.8rem;
+    line-height: 1.45;
+    margin-bottom: 18px;
+}
+
+.project-evidence span::before {
+    color: var(--color-primary);
+    content: '- ';
+}
+
+.project-privacy-status {
+    color: var(--color-text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    line-height: 1.45;
+    margin-bottom: 14px;
+}
+
+.project-archive-label {
+    border: 1px solid var(--color-glass-border);
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    padding: 2px 6px;
+}
+
+.project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.project-links .btn {
+    font-size: 0.8rem;
+}
+
+.modal-body h4 {
+    color: var(--color-text);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    margin: 0 0 8px;
+}
+
+.modal-evidence {
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin: 0 0 24px;
+    padding-left: 20px;
+}
+
+.modal-evidence li::marker {
+    color: var(--color-primary);
+}
+
+.tech-stack-modal .mono {
+    display: block;
+    font-size: 0.7rem;
+    margin-bottom: 14px;
+}
+
+.credentials-grid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.credential-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-glass-border);
+    border-radius: 8px;
+    color: var(--color-text);
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.credential-card:hover {
+    border-color: var(--color-primary);
+}
+
+.credential-card img {
+    aspect-ratio: 16 / 10;
+    display: block;
+    object-fit: cover;
+    width: 100%;
+}
+
+.credential-card > span {
+    display: block;
+    padding: 18px;
+}
+
+.credential-card svg {
+    color: var(--color-primary);
+    margin-right: 8px;
+}
+
+.credential-card strong,
+.credential-card small,
+.credential-card em {
+    display: block;
+}
+
+.credential-card small,
+.credential-card p {
+    color: var(--color-text-muted);
+    font-size: 0.8rem;
+    line-height: 1.5;
+}
+
+.credential-card p {
+    margin: 12px 0;
+}
+
+.credential-card em {
+    color: var(--color-primary);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-style: normal;
+}
+
+@media (max-width: 768px) {
+    .project-links .btn {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .credentials-grid {
+        grid-template-columns: 1fr;
     }
 }

@@ -3,15 +3,16 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { gsap } from 'gsap'
 import { FaGithub, FaLinkedin, FaFileDownload, FaInstagram } from 'react-icons/fa'
 import { HiArrowDown } from 'react-icons/hi'
+import { portfolioPositioning } from '../../data/portfolioContent.js'
 import './Hero.css'
+
+const roles = [portfolioPositioning.primaryRole, ...portfolioPositioning.supportingRoles]
 
 const Hero = () => {
     const titleRef = useRef(null)
     const containerRef = useRef(null)
     const [typedText, setTypedText] = useState('')
     const [currentRoleIndex, setCurrentRoleIndex] = useState(0)
-
-    const roles = ['Software Engineer', 'AI Engineer', 'Developer', 'Student']
 
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -131,8 +132,7 @@ const Hero = () => {
                     transition={{ delay: 0.8, duration: 0.8 }}
                 >
                     <p className="hero-description">
-                        student at <strong>University of Logistics & International Business</strong>.
-                        Passionate about software engineering, AI development, and building practical solutions.
+                        {portfolioPositioning.summary}
                     </p>
 
                     <div className="hero-meta">

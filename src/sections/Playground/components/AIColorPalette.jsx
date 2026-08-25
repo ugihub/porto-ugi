@@ -2,8 +2,6 @@ import { useState, useCallback } from 'react'
 import { FaPalette, FaCopy, FaCheck, FaRedo } from 'react-icons/fa'
 import { RiRobot2Fill } from 'react-icons/ri'
 
-const MISTRAL_API_KEY = import.meta.env.VITE_MISTRAL_API_KEY
-
 const PALETTE_PROMPT = (mood) => `Generate a color palette for the following mood/theme: "${mood}"
 
 Return ONLY valid JSON with this exact format, no other text:
@@ -34,22 +32,24 @@ const AIColorPalette = () => {
         setPalette(null)
 
         try {
-            const response = await fetch('https://api.mistral.ai/v1/chat/completions', {
+            const response = await fetch('/api/chat', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${MISTRAL_API_KEY}`,
                 },
+                credentials: 'include',
                 body: JSON.stringify({
-                    model: 'mistral-small-latest',
                     messages: [{ role: 'user', content: PALETTE_PROMPT(target) }],
-                    max_tokens: 400,
-                    temperature: 0.9,
+                    systemPrompt: 'Generate color palettes. Return only valid JSON matching the requested format.',
                 }),
             })
 
             const data = await response.json()
-            const raw = data.choices[0]?.message?.content || ''
+            if (!response.ok) {
+                throw new Error(data.error || 'Failed to generate palette')
+            }
+
+            const raw = data.content || ''
             const jsonMatch = raw.match(/\{[\s\S]*\}/)
             if (jsonMatch) {
                 const parsed = JSON.parse(jsonMatch[0])

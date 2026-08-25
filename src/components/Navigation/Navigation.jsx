@@ -11,7 +11,7 @@ const Navigation = ({ onOpenCustomizer }) => {
     const navLinks = [
         { id: 'hero', label: 'Home' },
         { id: 'about', label: 'About' },
-        { id: 'projects', label: 'Work' },
+        { id: 'projects', label: 'AI Systems' },
         { id: 'playground', label: 'Playground' },
         { id: 'contact', label: 'Contact' }
     ]

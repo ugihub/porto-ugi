@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { motion, useInView, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import { FaDownload } from 'react-icons/fa'
 import { HiArrowRight } from 'react-icons/hi'
+import { portfolioPositioning } from '../../data/portfolioContent.js'
 import './About.css'
 
 const About = () => {
@@ -123,13 +124,11 @@ const About = () => {
 
                         <div className="about-bio">
                             <p>
-                                A first-semester student at <strong>University of Logistics and
-                                    International Business</strong>, passionate about software engineering
-                                and AI development to build innovative solutions.
+                                {portfolioPositioning.about}
                             </p>
                             <p>
-                                I explore various programming languages to build practical solutions,
-                                combining my academic background with technical expertise.
+                                I study at <strong>University of Logistics and International Business</strong>,
+                                applying that domain context to practical AI systems.
                             </p>
                         </div>
 

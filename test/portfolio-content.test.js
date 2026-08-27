@@ -26,20 +26,40 @@ test('WarehouseFlow is public with its approved Hugging Face link', () => {
   ])
 })
 
-test('tools view features 5 Bento Box cards with complete architectural metadata', () => {
+test('tools view features 5 Bento Box cards with complete architectural metadata and valid grid areas', () => {
   assert.equal(toolGroups?.length, 5)
+  const expectedAreas = ['c01', 'c02', 'c03', 'c04', 'c05']
+  const validVariants = ['headline', 'stat', 'volt', 'callout', 'arsenal']
+
   assert.deepEqual(
     toolGroups?.map((group) => group.id),
     ['llm-agents', 'ai-infrastructure', 'product-engineering', 'github-profile', 'tech-arsenal']
   )
+
   for (const group of toolGroups) {
     assert.ok(group.id)
     assert.ok(group.title)
-    assert.ok(group.badge)
+    assert.ok(expectedAreas.includes(group.area))
+    assert.ok(validVariants.includes(group.variant))
     assert.ok(group.explanation)
     assert.ok(group.explanation.title)
     assert.ok(group.explanation.purpose)
     assert.ok(group.explanation.highlights?.length > 0)
+  }
+
+  // Card 04 GitHub CTA assert
+  const githubCard = toolGroups.find((g) => g.id === 'github-profile')
+  assert.equal(githubCard.cta.external, true)
+  assert.match(githubCard.cta.href, /^https:\/\/github\.com/i)
+
+  // Card 05 Zigzag Categories bounds check
+  const arsenalCard = toolGroups.find((g) => g.id === 'tech-arsenal')
+  assert.equal(arsenalCard.categories?.length, 4)
+  for (const cat of arsenalCard.categories) {
+    assert.ok(cat.x >= 0 && cat.x <= 100)
+    assert.ok(cat.y >= 0 && cat.y <= 140)
+    assert.ok(cat.label)
+    assert.ok(cat.accent)
   }
 })
 

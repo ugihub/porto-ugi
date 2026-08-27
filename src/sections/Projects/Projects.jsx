@@ -23,27 +23,27 @@ const Projects = () => {
   const selectedProject = featuredProjects.find((project) => project.id === selectedProjectId)
 
   return (
-    <section id="projects" className="projects section" ref={sectionRef}>
+    <section className="projects section" id="projects" ref={sectionRef}>
       <div className="container">
         <motion.div
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
           className="projects-header"
           initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
           <div className="header-left">
             <span className="section-tag">Portfolio</span>
             <h2>AI<br /><span className="text-gradient">SYSTEMS</span></h2>
           </div>
-          <div className="tab-toggle" role="tablist" aria-label="Portfolio categories">
+          <div aria-label="Portfolio categories" className="tab-toggle" role="tablist">
             {tabs.map((tab) => (
               <button
-                key={tab.id}
-                type="button"
-                role="tab"
                 aria-selected={activeTab === tab.id}
                 className={`tab-btn ${activeTab === tab.id ? 'active' : ''}`}
+                key={tab.id}
                 onClick={() => dispatch(setActiveTab(tab.id))}
+                role="tab"
+                type="button"
               >
                 <span className="mono">{tab.label}</span>
               </button>
@@ -55,46 +55,73 @@ const Projects = () => {
           <AnimatePresence mode="wait">
             {activeTab === 'ai' && (
               <motion.div
-                key="ai"
-                className="projects-grid"
-                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
+                className="projects-grid"
                 exit={{ opacity: 0, y: -20 }}
+                initial={{ opacity: 0, y: 20 }}
+                key="ai"
               >
                 {featuredProjects.map((project) => (
-                  <ProjectCard key={project.id} project={project} onSelect={(id) => dispatch(selectProject(id))} />
+                  <ProjectCard
+                    key={project.id}
+                    onSelect={(id) => dispatch(selectProject(id))}
+                    project={project}
+                  />
                 ))}
               </motion.div>
             )}
+
             {activeTab === 'tools' && (
               <motion.div
-                key="tools"
-                className="tools-grid"
-                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
+                className="bento-wrapper"
                 exit={{ opacity: 0, y: -20 }}
+                initial={{ opacity: 0, y: 20 }}
+                key="tools"
               >
-                {toolGroups.map((group, index) => <ToolGroupCard key={group.id} group={group} index={index} />)}
+                {/* 5-Card Bento Grid */}
+                <div className="bento-grid">
+                  {toolGroups.map((group, index) => (
+                    <ToolGroupCard group={group} index={index} key={group.id} />
+                  ))}
+                </div>
               </motion.div>
             )}
+
             {activeTab === 'credentials' && (
               <motion.div
-                key="credentials"
-                className="credentials-grid"
-                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
+                className="credentials-grid"
                 exit={{ opacity: 0, y: -20 }}
+                initial={{ opacity: 0, y: 20 }}
+                key="credentials"
               >
                 {verifiedCredentials.map((credential) => (
-                  <a key={credential.id} className="credential-card" href={credential.credentialUrl} target="_blank" rel="noreferrer">
-                    <img src={credential.image} alt="" />
-                    <span>
-                      <FaCertificate aria-hidden="true" />
-                      <strong>{credential.title}</strong>
-                      <small>{credential.organization} | {credential.year}</small>
-                      <p>{credential.description}</p>
-                      <em>View credential <FaExternalLinkAlt /></em>
-                    </span>
+                  <a
+                    className="credential-card"
+                    href={credential.credentialUrl}
+                    key={credential.id}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    <div className="credential-img-wrapper">
+                      <img alt={credential.title} src={credential.image} />
+                    </div>
+                    <div className="credential-content">
+                      <div className="credential-heading-group">
+                        <div className="credential-title-row">
+                          <FaCertificate aria-hidden="true" className="credential-icon" />
+                          <strong className="credential-title">{credential.title}</strong>
+                        </div>
+                        <small className="credential-meta mono">
+                          {credential.organization} <span className="meta-sep">|</span> {credential.year}
+                        </small>
+                      </div>
+                      <p className="credential-desc">{credential.description}</p>
+                      <em className="credential-link-cta">
+                        View credential <FaExternalLinkAlt />
+                      </em>
+                    </div>
                   </a>
                 ))}
               </motion.div>
@@ -104,7 +131,12 @@ const Projects = () => {
       </div>
 
       <AnimatePresence>
-        {selectedProject && <ProjectModal project={selectedProject} onClose={() => dispatch(clearSelectedProject())} />}
+        {selectedProject && (
+          <ProjectModal
+            onClose={() => dispatch(clearSelectedProject())}
+            project={selectedProject}
+          />
+        )}
       </AnimatePresence>
     </section>
   )

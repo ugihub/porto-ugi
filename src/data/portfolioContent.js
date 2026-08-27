@@ -60,13 +60,14 @@ export const featuredProjects = [
 export const toolGroups = [
   {
     id: 'llm-agents',
-    type: 'standard',
-    gridSlot: 'top-left',
-    title: 'LLM and Agents',
+    area: 'c01',
+    variant: 'headline',
+    accent: 'cyan',
+    headline: { lead: 'LLM &', accentWord: 'AGENTS' },
+    sub: 'Domain SLM quantization, LoRA adapter tuning, and deterministic tool-calling workflows for fast local inference.',
+    tools: ['Gemma 3', 'LoRA', 'GGUF'],
     badge: 'Model Delivery',
-    description: 'Model quantization, domain fine-tuning, and dependable agent behavior for enterprise workflows.',
-    tools: ['Gemma 3', 'LoRA', 'GGUF', 'llama.cpp', 'Tool calling', 'RAG'],
-    stats: { label: 'Inference', value: 'Local & Edge' },
+    title: 'LLM and Agents',
     explanation: {
       title: 'LLM & Agent Systems',
       purpose: 'Encompasses fine-tuning lightweight SLMs, GGUF conversion for low-latency local execution, and building autonomous agents with strict tool-calling contracts.',
@@ -80,13 +81,14 @@ export const toolGroups = [
   },
   {
     id: 'ai-infrastructure',
-    type: 'standard',
-    gridSlot: 'top-middle',
-    title: 'AI Infrastructure',
+    area: 'c02',
+    variant: 'stat',
+    accent: 'emerald',
+    stat: { value: 12, unit: 'SYSTEMS WIRED' },
+    line: 'Scalable vector retrieval, deterministic task execution gates, and automated safety evaluation pipelines.',
+    tools: ['Python', 'pgvector', 'Supabase'],
     badge: 'Data & Guardrails',
-    description: 'Vector databases, deterministic action gating, continuous testing, and CI/CD foundations for AI systems.',
-    tools: ['Python', 'pgvector', 'Supabase', 'PyYAML', 'Evaluation', 'GitHub Actions'],
-    stats: { label: 'Verification', value: '240+ Tests' },
+    title: 'AI Infrastructure',
     explanation: {
       title: 'AI Infrastructure & Guardrails',
       purpose: 'Provides robust vector retrieval, state persistence, deterministic validation gates, and automated regression testing harnesses.',
@@ -100,13 +102,14 @@ export const toolGroups = [
   },
   {
     id: 'product-engineering',
-    type: 'standard',
-    gridSlot: 'bottom-middle',
+    area: 'c03',
+    variant: 'volt',
+    accent: 'amber',
+    badge: { icon: 'award', text: 'SHIP' },
+    headline: { lead: 'FROM PROTOTYPE', accentWord: 'TO PRODUCTION' },
+    sub: 'Reactive web applications, high-throughput backend microservices, and hybrid ML trading systems with strict risk gates.',
+    tools: ['React', 'TypeScript', 'NestJS'],
     title: 'Product Engineering',
-    badge: 'Intelligent Apps',
-    description: 'Modern web interfaces, high-throughput microservices, and hybrid ML models that deliver AI value to real users.',
-    tools: ['React', 'TypeScript', 'NestJS', 'MetaTrader 5', 'XGBoost', 'Framer Motion'],
-    stats: { label: 'Architecture', value: 'Full-Stack' },
     explanation: {
       title: 'Applied Product Engineering',
       purpose: 'Bridges AI capabilities into production-ready web applications, reactive dashboards, real-time trading engines, and scalable microservices.',
@@ -120,16 +123,21 @@ export const toolGroups = [
   },
   {
     id: 'github-profile',
-    type: 'github',
-    gridSlot: 'bottom-left',
-    title: 'GitHub & Open Source',
-    badge: 'Active Builder',
-    username: 'ugihub',
-    profileUrl: 'https://github.com/ugihub',
+    area: 'c04',
+    variant: 'callout',
+    accent: 'coral',
+    handle: '@ugihub',
+    headline: { lead: 'OPEN SOURCE', accentWord: 'ECOSYSTEM' },
+    stats: [
+      { label: 'Public Repos', value: '8+' },
+      { label: 'Model Weights', value: 'GGUF' },
+      { label: 'Primary Tech', value: 'TypeScript' }
+    ],
+    cta: { label: 'Open GitHub Profile', href: 'https://github.com/ugihub', external: true },
     huggingFaceUrl: 'https://huggingface.co/Ugisr',
-    description: 'Continuous open-source contributions, domain SLM model weights, and agent orchestrators.',
-    stats: { label: 'Activity', value: 'Public Repos & Models' },
-    tools: ['@ugihub on GitHub', 'Ugisr on HuggingFace', 'Open Source Artifacts'],
+    tools: ['@ugihub', 'Hugging Face', 'Open Source'],
+    badge: 'Active Builder',
+    title: 'GitHub & Open Source',
     explanation: {
       title: 'Open Source & Code Activity',
       purpose: 'Public repository hub featuring reproducible research, model weights, framework tools, and open benchmarks.',
@@ -143,19 +151,60 @@ export const toolGroups = [
   },
   {
     id: 'tech-arsenal',
-    type: 'arsenal',
-    gridSlot: 'right-span',
-    title: 'AI Arsenal & Tech Map',
-    badge: 'Architecture Route',
-    description: 'Comprehensive map of runtimes, model layers, vector stores, and deployment infrastructure.',
-    layers: [
-      { name: 'Runtimes', items: ['Python 3.11+', 'Node.js / Bun', 'llama.cpp GGUF', 'FastAPI / NestJS'] },
-      { name: 'Intelligence', items: ['Gemma 3', 'LoRA Fine-tuning', 'Structured Outputs', 'RAG Pipelines'] },
-      { name: 'Storage & Memory', items: ['pgvector', 'PostgreSQL', 'Supabase', 'Redis State'] },
-      { name: 'Delivery & Guardrails', items: ['Deterministic Action Gates', 'GitHub Actions CI', 'Vercel / Docker', 'Evaluation Suite'] }
+    area: 'c05',
+    variant: 'arsenal',
+    accent: 'violet',
+    headline: { lead: 'TECH', accentWord: 'ARSENAL' },
+    routeLine: 'Prompt layer to serving layer',
+    categories: [
+      {
+        id: 'runtime',
+        label: 'RUNTIME',
+        accent: 'cyan',
+        tools: ['Python 3.11+', 'llama.cpp GGUF', 'Node.js / Bun', 'FastAPI'],
+        waypoints: [
+          { x: 18, y: 38, label: 'Prompt', placement: 'top' },
+          { x: 50, y: 52, label: 'llama.cpp', placement: 'bottom' },
+          { x: 82, y: 38, label: 'Inference', placement: 'top' }
+        ]
+      },
+      {
+        id: 'intelligence',
+        label: 'INTEL',
+        accent: 'amber',
+        tools: ['Gemma 3', 'LoRA Adapters', 'Structured JSON', 'RAG Flow'],
+        waypoints: [
+          { x: 18, y: 64, label: 'Gemma 3', placement: 'top' },
+          { x: 50, y: 78, label: 'LoRA', placement: 'bottom' },
+          { x: 82, y: 64, label: 'Schema', placement: 'top' }
+        ]
+      },
+      {
+        id: 'memory',
+        label: 'MEMORY',
+        accent: 'emerald',
+        tools: ['pgvector', 'PostgreSQL', 'Supabase', 'Redis State'],
+        waypoints: [
+          { x: 18, y: 90, label: 'pgvector', placement: 'top' },
+          { x: 50, y: 104, label: 'Supabase', placement: 'bottom' },
+          { x: 82, y: 90, label: 'Vectors', placement: 'top' }
+        ]
+      },
+      {
+        id: 'delivery',
+        label: 'DELIVERY',
+        accent: 'coral',
+        tools: ['Action Gates', 'GitHub Actions', 'Vercel / Docker', 'Unit Tests'],
+        waypoints: [
+          { x: 18, y: 116, label: 'Action Gate', placement: 'top' },
+          { x: 50, y: 130, label: 'CI/CD', placement: 'bottom' },
+          { x: 82, y: 116, label: 'Production', placement: 'top' }
+        ]
+      }
     ],
     tools: ['Python', 'Gemma 3', 'GGUF', 'pgvector', 'React', 'NestJS', 'Supabase', 'Docker'],
-    stats: { label: 'Ecosystem', value: '4 Core Layers' },
+    badge: 'Architecture Route',
+    title: 'AI Arsenal & Tech Map',
     explanation: {
       title: 'AI Arsenal & System Architecture Route',
       purpose: 'Visualizes the end-to-end applied AI engineering stack spanning inference runtimes, vector storage, agent guardrails, and cloud deployment.',

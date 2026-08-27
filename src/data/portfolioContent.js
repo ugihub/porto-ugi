@@ -7,13 +7,13 @@ export const featuredProjects = [
     id: 'warehouseflow',
     title: 'WarehouseFlow Gemma 3 1B IT',
     category: 'Domain LLM',
-    visibility: 'private',
+    visibility: 'public',
     role: 'Model developer',
     problem: 'Warehouse operations need reliable, local tool-calling assistance.',
     summary: 'Fine-tuned Gemma 3 1B delivered as GGUF for local logistics workflows.',
     evidence: ['12 warehouse tools', 'GGUF local deployment', 'LogiBench schema match: 89.6%'],
     tech: ['Gemma 3', 'LoRA', 'GGUF', 'llama.cpp', 'Tool calling'],
-    publicLinks: []
+    publicLinks: [{ label: 'Hugging Face', url: 'https://huggingface.co/Ugisr/warehouseflow-gemma3-1b-it-gguf' }]
   },
   {
     id: 'cuanlimbah',
@@ -54,6 +54,118 @@ export const featuredProjects = [
     evidence: ['SMC signal analysis', 'XGBoost model layer', 'LLM consensus', 'Dry-run and risk controls'],
     tech: ['Python', 'MetaTrader 5', 'XGBoost', 'LLM orchestration', 'Supabase'],
     publicLinks: []
+  }
+]
+
+export const toolGroups = [
+  {
+    id: 'llm-agents',
+    type: 'standard',
+    gridSlot: 'top-left',
+    title: 'LLM and Agents',
+    badge: 'Model Delivery',
+    description: 'Model quantization, domain fine-tuning, and dependable agent behavior for enterprise workflows.',
+    tools: ['Gemma 3', 'LoRA', 'GGUF', 'llama.cpp', 'Tool calling', 'RAG'],
+    stats: { label: 'Inference', value: 'Local & Edge' },
+    explanation: {
+      title: 'LLM & Agent Systems',
+      purpose: 'Encompasses fine-tuning lightweight SLMs, GGUF conversion for low-latency local execution, and building autonomous agents with strict tool-calling contracts.',
+      highlights: [
+        'LoRA & QLoRA domain adaptation',
+        'GGUF / llama.cpp local orchestration',
+        'Deterministic JSON-schema tool calling',
+        'Retrieval-Augmented Generation workflows'
+      ]
+    }
+  },
+  {
+    id: 'ai-infrastructure',
+    type: 'standard',
+    gridSlot: 'top-middle',
+    title: 'AI Infrastructure',
+    badge: 'Data & Guardrails',
+    description: 'Vector databases, deterministic action gating, continuous testing, and CI/CD foundations for AI systems.',
+    tools: ['Python', 'pgvector', 'Supabase', 'PyYAML', 'Evaluation', 'GitHub Actions'],
+    stats: { label: 'Verification', value: '240+ Tests' },
+    explanation: {
+      title: 'AI Infrastructure & Guardrails',
+      purpose: 'Provides robust vector retrieval, state persistence, deterministic validation gates, and automated regression testing harnesses.',
+      highlights: [
+        'pgvector index optimization and semantic search',
+        'LHTM (Long-Horizon Task Management) state machines',
+        'Adversarial policy and safety gating',
+        'Automated CI/CD validation pipelines'
+      ]
+    }
+  },
+  {
+    id: 'product-engineering',
+    type: 'standard',
+    gridSlot: 'bottom-middle',
+    title: 'Product Engineering',
+    badge: 'Intelligent Apps',
+    description: 'Modern web interfaces, high-throughput microservices, and hybrid ML models that deliver AI value to real users.',
+    tools: ['React', 'TypeScript', 'NestJS', 'MetaTrader 5', 'XGBoost', 'Framer Motion'],
+    stats: { label: 'Architecture', value: 'Full-Stack' },
+    explanation: {
+      title: 'Applied Product Engineering',
+      purpose: 'Bridges AI capabilities into production-ready web applications, reactive dashboards, real-time trading engines, and scalable microservices.',
+      highlights: [
+        'Interactive React 18 frontend with fluid Framer Motion',
+        'Scalable NestJS / TypeScript backend microservices',
+        'Hybrid ML signal synthesis (XGBoost + LLM consensus)',
+        'Accessible, mobile-responsive design systems'
+      ]
+    }
+  },
+  {
+    id: 'github-profile',
+    type: 'github',
+    gridSlot: 'bottom-left',
+    title: 'GitHub & Open Source',
+    badge: 'Active Builder',
+    username: 'ugihub',
+    profileUrl: 'https://github.com/ugihub',
+    huggingFaceUrl: 'https://huggingface.co/Ugisr',
+    description: 'Continuous open-source contributions, domain SLM model weights, and agent orchestrators.',
+    stats: { label: 'Activity', value: 'Public Repos & Models' },
+    tools: ['@ugihub on GitHub', 'Ugisr on HuggingFace', 'Open Source Artifacts'],
+    explanation: {
+      title: 'Open Source & Code Activity',
+      purpose: 'Public repository hub featuring reproducible research, model weights, framework tools, and open benchmarks.',
+      highlights: [
+        'Open-source AI repositories and fine-tuning scripts',
+        'Quantized GGUF models on Hugging Face hub',
+        'Strict CI/CD test coverage on every repository',
+        'Direct links to inspect source code and weights'
+      ]
+    }
+  },
+  {
+    id: 'tech-arsenal',
+    type: 'arsenal',
+    gridSlot: 'right-span',
+    title: 'AI Arsenal & Tech Map',
+    badge: 'Architecture Route',
+    description: 'Comprehensive map of runtimes, model layers, vector stores, and deployment infrastructure.',
+    layers: [
+      { name: 'Runtimes', items: ['Python 3.11+', 'Node.js / Bun', 'llama.cpp GGUF', 'FastAPI / NestJS'] },
+      { name: 'Intelligence', items: ['Gemma 3', 'LoRA Fine-tuning', 'Structured Outputs', 'RAG Pipelines'] },
+      { name: 'Storage & Memory', items: ['pgvector', 'PostgreSQL', 'Supabase', 'Redis State'] },
+      { name: 'Delivery & Guardrails', items: ['Deterministic Action Gates', 'GitHub Actions CI', 'Vercel / Docker', 'Evaluation Suite'] }
+    ],
+    tools: ['Python', 'Gemma 3', 'GGUF', 'pgvector', 'React', 'NestJS', 'Supabase', 'Docker'],
+    stats: { label: 'Ecosystem', value: '4 Core Layers' },
+    explanation: {
+      title: 'AI Arsenal & System Architecture Route',
+      purpose: 'Visualizes the end-to-end applied AI engineering stack spanning inference runtimes, vector storage, agent guardrails, and cloud deployment.',
+      highlights: [
+        'Runtime Layer: High-performance local and edge inference',
+        'Intelligence Layer: Domain-specific model tuning and tool calling',
+        'Memory Layer: Vector indexing and structured persistence',
+        'Delivery Layer: Guardrails, continuous evaluation, and containerization'
+      ]
+    }
   }
 ]
 

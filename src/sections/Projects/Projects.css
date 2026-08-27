@@ -1,3 +1,7 @@
+/* ==========================================================================
+   Projects Section Stylesheet - Modern Bento & AI Systems Showcase
+   ========================================================================== */
+
 .projects {
     padding-top: 100px;
     padding-bottom: 100px;
@@ -23,14 +27,14 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
     position: relative;
     z-index: 2;
 }
 
 .header-left h2 {
     font-family: var(--font-display);
-    font-size: 3.5rem;
+    font-size: clamp(2.5rem, 5vw, 4rem);
     line-height: 1;
     margin-top: 10px;
 }
@@ -38,7 +42,7 @@
 /* Tab Toggle */
 .tab-toggle {
     display: flex;
-    gap: 10px;
+    gap: 8px;
     background: var(--color-surface);
     padding: 6px;
     border-radius: 40px;
@@ -49,13 +53,13 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 8px 20px;
+    padding: 9px 20px;
     border-radius: 30px;
     border: none;
     background: transparent;
     color: var(--color-text-muted);
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.25s ease;
 }
 
 .tab-btn:hover {
@@ -68,15 +72,10 @@
     color: var(--color-bg);
 }
 
-.tab-count {
-    font-size: 0.7rem;
-    font-weight: 700;
-    opacity: 0.8;
-}
-
 .tab-btn .mono {
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    font-weight: 700;
 }
 
 /* Projects Content */
@@ -90,13 +89,13 @@
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 30px;
+    gap: 24px;
 }
 
 .project-card {
     background: var(--color-surface);
     border: 1px solid var(--color-glass-border);
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
     height: 100%;
     transition: all 0.3s ease;
@@ -109,11 +108,11 @@
 .project-card:hover {
     border-color: var(--color-primary);
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 14px 36px -10px rgba(0, 0, 0, 0.6);
 }
 
 .card-content {
-    padding: 30px;
+    padding: 28px;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -135,16 +134,16 @@
 }
 
 .project-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
+    font-size: 1.45rem;
+    margin-bottom: 12px;
     color: var(--color-text);
 }
 
 .project-card p {
     color: var(--color-text-muted);
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     line-height: 1.6;
-    margin-bottom: 25px;
+    margin-bottom: 22px;
     flex-grow: 1;
 }
 
@@ -152,11 +151,11 @@
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .tech-tag {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     padding: 5px 10px;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--color-glass-border);
@@ -167,8 +166,8 @@
 
 .card-links {
     display: flex;
-    gap: 20px;
-    padding-top: 20px;
+    gap: 18px;
+    padding-top: 18px;
     border-top: 1px solid var(--color-glass-border);
 }
 
@@ -202,134 +201,605 @@
     transform: translateY(0);
 }
 
+/* ==========================================================================
+   Tools & Systems - 5-Card Bento Box Grid (Tab 2)
+   ========================================================================== */
 
-/* Tech Stack Grid (Tab 2) */
-.skills-grid-b {
+.tools-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-template-columns: 1fr 1fr 1.25fr;
+    grid-auto-rows: minmax(280px, auto);
     gap: 20px;
+    perspective: 1200px;
 }
 
-.skill-card-b {
-    background: var(--color-surface);
-    border: 1px solid var(--color-glass-border);
-    padding: 25px 20px;
-    border-radius: 12px;
-    text-align: center;
+.bento-card {
+    background: #11141a;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 16px;
+    padding: 24px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    transition: all 0.3s ease;
-}
-
-.skill-icon-b {
-    font-size: 2.5rem;
-    color: var(--color-text-muted);
-    transition: color 0.3s ease;
-}
-
-.skill-card-b:hover .skill-icon-b {
-    color: var(--color-primary);
-}
-
-.skill-info h4 {
-    font-size: 0.9rem;
-    margin-bottom: 10px;
-    color: var(--color-text);
-}
-
-.skill-progress-bg {
-    width: 100%;
-    height: 4px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 2px;
-    overflow: hidden;
-    width: 120px;
-}
-
-.skill-progress-fill {
-    height: 100%;
-    background: var(--color-primary);
-    border-radius: 2px;
-}
-
-/* Awards Grid (Tab 3) */
-.awards-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 15px;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.award-card {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-    background: var(--color-surface);
-    border: 1px solid var(--color-glass-border);
-    padding: 25px;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    justify-content: space-between;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
+    transform-style: preserve-3d;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
-.award-card:hover {
-    border-color: var(--color-primary);
-    background: rgba(255, 255, 255, 0.02);
+/* Bento Accent Topline */
+.bento-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--bento-accent, var(--color-primary));
+    border-radius: 16px 16px 0 0;
+    opacity: 0.7;
+    transition: opacity 0.3s ease, height 0.3s ease;
 }
 
-.award-icon {
-    font-size: 2rem;
-    color: var(--color-primary);
-    width: 60px;
-    height: 60px;
+.bento-card:hover {
+    border-color: var(--bento-accent, var(--color-primary));
+    background: #131822;
+    box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.7), 0 0 28px -8px var(--bento-accent-glow, rgba(0, 229, 255, 0.3));
+}
+
+.bento-card:hover::before {
+    opacity: 1;
+    height: 4px;
+}
+
+/* Card Placements per 5-Card Bento Scheme */
+.bento-slot--top-left {
+    --bento-accent: #00e5ff;
+    --bento-accent-glow: rgba(0, 229, 255, 0.35);
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.bento-slot--top-middle {
+    --bento-accent: #00e676;
+    --bento-accent-glow: rgba(0, 230, 118, 0.35);
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.bento-slot--bottom-left {
+    --bento-accent: #ff5722;
+    --bento-accent-glow: rgba(255, 87, 34, 0.35);
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.bento-slot--bottom-middle {
+    --bento-accent: #ffc400;
+    --bento-accent-glow: rgba(255, 196, 0, 0.35);
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.bento-slot--right-span {
+    --bento-accent: #7c4dff;
+    --bento-accent-glow: rgba(124, 77, 255, 0.35);
+    grid-column: 3;
+    grid-row: 1 / span 2;
+}
+
+/* Bento Topbar */
+.bento-card-topbar {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.bento-meta-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.bento-index {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: var(--color-text-muted);
+}
+
+.bento-badge {
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    color: var(--bento-accent);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 3px 8px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+/* Info Trigger & Hover Popover */
+.bento-info-wrapper {
+    position: relative;
+}
+
+.bento-info-trigger {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--color-glass-border);
+    color: var(--color-text-muted);
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 50%;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.bento-info-trigger:hover,
+.bento-info-trigger.active {
+    background: var(--bento-accent);
+    color: #0a0a0a;
+    border-color: var(--bento-accent);
+    transform: scale(1.1);
+    box-shadow: 0 0 10px var(--bento-accent);
+}
+
+.bento-info-popover {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    width: clamp(260px, 32vw, 340px);
+    background: #0d1117;
+    border: 1px solid var(--bento-accent);
+    border-radius: 10px;
+    padding: 14px 16px;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8), 0 0 20px -5px var(--bento-accent-glow);
+    z-index: 60;
+    text-align: left;
+}
+
+.bento-info-popover::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    right: 9px;
+    width: 8px;
+    height: 8px;
+    background: #0d1117;
+    border-left: 1px solid var(--bento-accent);
+    border-top: 1px solid var(--bento-accent);
+    transform: rotate(45deg);
+}
+
+.bento-popover-header {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 8px;
+    color: var(--bento-accent);
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+.bento-popover-desc {
+    font-size: 0.76rem;
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+    margin: 0 0 10px;
+}
+
+.bento-popover-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.bento-popover-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: 0.72rem;
+  color: var(--color-text-primary);
+  line-height: 1.4;
+}
+
+.bento-popover-list .check-icon {
+  color: var(--bento-accent);
+  flex-shrink: 0;
+  margin-top: 2px;
+  font-size: 0.75rem;
+}
+
+/* Bento Standard Card Main */
+.bento-card-main {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.bento-icon-container {
     flex-shrink: 0;
 }
 
-.award-content {
+.bento-icon-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--bento-accent);
+    color: var(--bento-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    box-shadow: 0 0 16px -4px var(--bento-accent-glow);
+}
+
+.bento-card-text {
     flex: 1;
 }
 
-.award-content h4 {
-    font-size: 1.2rem;
+.bento-card-title {
+    font-size: 1.35rem;
+    font-weight: 700;
     color: var(--color-text);
-    margin-bottom: 5px;
+    margin: 0 0 6px;
+    line-height: 1.2;
 }
 
-.award-org {
+.bento-card-desc {
     font-size: 0.85rem;
-    color: var(--color-primary);
-    margin-bottom: 5px;
-    font-family: var(--font-mono);
-    display: block;
+    line-height: 1.55;
+    color: var(--color-text-muted);
+    margin: 0;
 }
 
-.award-desc {
-    font-size: 0.9rem;
-    color: var(--color-text-muted);
+/* CARD 04: GitHub Profile Callout */
+.bento-github-body {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 14px;
 }
 
-.award-arrow {
-    color: var(--color-text-muted);
+.github-hero-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.github-icon-box {
+    background: rgba(255, 87, 34, 0.1);
+    color: #ff5722;
+}
+
+.github-handle {
     font-size: 1.2rem;
-    opacity: 0;
-    transition: all 0.3s ease;
-    transform: translateX(-10px);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 0 0 2px;
 }
 
-.award-card:hover .award-arrow {
-    opacity: 1;
-    transform: translateX(0);
+.github-role-badge {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    color: #ff8a65;
+}
+
+.github-desc {
+    font-size: 0.82rem;
+}
+
+.github-links-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.github-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 9px 14px;
+    border-radius: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.github-btn.primary {
+    background: #ff5722;
+    color: #fff;
+}
+
+.github-btn.primary:hover {
+    background: #f4511e;
+    box-shadow: 0 0 16px rgba(255, 87, 34, 0.5);
+    transform: translateY(-2px);
+}
+
+.github-btn.secondary {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 87, 34, 0.3);
+    color: #ffccbc;
+}
+
+.github-btn.secondary:hover {
+    border-color: #ff5722;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.external-ico {
+    font-size: 0.65rem;
+}
+
+/* CARD 05: Tech Arsenal & Architecture Map */
+.bento-arsenal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 14px;
+}
+
+.arsenal-header-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.arsenal-icon-box {
+    background: rgba(124, 77, 255, 0.1);
+    color: #7c4dff;
+}
+
+.arsenal-layers-container {
+    background: #0d0f14;
+    border: 1px solid rgba(124, 77, 255, 0.2);
+    border-radius: 12px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.arsenal-tabs-bar {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+}
+
+.arsenal-tab-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 10px;
+    border-radius: 6px;
+    background: #151822;
+    border: 1px solid var(--color-glass-border);
+    color: var(--color-text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s ease;
+}
+
+.arsenal-tab-btn .layer-step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    font-size: 0.6rem;
+}
+
+.arsenal-tab-btn:hover {
+    color: var(--color-text-primary);
+    border-color: rgba(124, 77, 255, 0.4);
+}
+
+.arsenal-tab-btn.active {
+    background: rgba(124, 77, 255, 0.15);
+    border-color: #7c4dff;
+    color: #b388ff;
+}
+
+.arsenal-tab-btn.active .layer-step-num {
+    background: #7c4dff;
+    color: #fff;
+}
+
+.arsenal-layer-details {
+    padding: 10px;
+    background: #11141c;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.layer-kicker {
+    display: block;
+    font-size: 0.68rem;
+    color: #b388ff;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.layer-items-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
+}
+
+.layer-item-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--color-text-primary);
+}
+
+.pill-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #7c4dff;
+    box-shadow: 0 0 6px rgba(124, 77, 255, 0.8);
+}
+
+/* Bento Footer */
+.bento-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.bento-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    flex: 1;
+}
+
+.bento-tag {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    padding: 4px 9px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--color-glass-border);
+    color: var(--color-text-secondary);
+    transition: all 0.2s ease;
+}
+
+.bento-card:hover .bento-tag {
+    border-color: rgba(255, 255, 255, 0.15);
+    color: var(--color-text);
+}
+
+.bento-tag:hover {
+    border-color: var(--bento-accent) !important;
+    color: var(--bento-accent) !important;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.bento-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex-shrink: 0;
+}
+
+.bento-stat .stat-label {
+    font-size: 0.6rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+}
+
+.bento-stat .stat-value {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--bento-accent);
+    font-weight: 700;
+}
+
+/* Credentials Grid (Tab 3) */
+.credentials-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.credential-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-glass-border);
+    border-radius: 12px;
+    color: var(--color-text);
+    overflow: hidden;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.credential-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-4px);
+    box-shadow: 0 14px 36px -10px rgba(0, 0, 0, 0.5);
+}
+
+.credential-card img {
+    aspect-ratio: 16 / 10;
+    display: block;
+    object-fit: cover;
+    width: 100%;
+}
+
+.credential-card > span {
+    display: block;
+    padding: 20px;
+}
+
+.credential-card svg {
     color: var(--color-primary);
+    margin-right: 8px;
+}
+
+.credential-card strong {
+    font-size: 1.15rem;
+    color: var(--color-text);
+    margin-bottom: 4px;
+}
+
+.credential-card small {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+}
+
+.credential-card p {
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 10px 0 14px;
+}
+
+.credential-card em {
+    color: var(--color-primary);
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    font-style: normal;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
 }
 
 /* Modal */
@@ -353,7 +823,7 @@
     max-width: 800px;
     background: var(--color-surface);
     border: 1px solid var(--color-glass-border);
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
     position: relative;
     max-height: 90vh;
@@ -423,88 +893,28 @@
     gap: 15px;
 }
 
-/* Responsive */
-@media (max-width: 992px) {
-    .projects-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 30px;
-    }
-
-    .header-left h2 {
-        font-size: 2.5rem;
-    }
+.modal-body h4 {
+    color: var(--color-text);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    margin: 0 0 8px;
 }
 
-@media (max-width: 768px) {
-    .tab-toggle {
-        width: 100%;
-        overflow-x: auto;
-        padding-bottom: 10px;
-        /* Hide scrollbar */
-        scrollbar-width: none;
-    }
-
-    .tab-toggle::-webkit-scrollbar {
-        display: none;
-    }
-
-    .tab-btn {
-        white-space: nowrap;
-        flex-shrink: 0;
-    }
-
-    .award-card {
-        flex-direction: column;
-        text-align: center;
-        padding: 30px 20px;
-        gap: 20px;
-    }
-
-    .award-arrow {
-        display: none;
-    }
-
-    .modal-body {
-        padding: 25px;
-    }
-
-    .modal-body h3 {
-        font-size: 1.8rem;
-    }
-
-    .modal-links {
-        flex-direction: column;
-    }
-
-    .modal-links .btn {
-        width: 100%;
-        justify-content: center;
-    }
+.modal-evidence {
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin: 0 0 24px;
+    padding-left: 20px;
 }
 
-@media (max-width: 576px) {
-    .header-left h2 {
-        font-size: 2rem;
-    }
+.modal-evidence li::marker {
+    color: var(--color-primary);
+}
 
-    .projects-bg-text {
-        font-size: 8rem;
-        top: 5%;
-    }
-
-    .skills-grid-b {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-    }
-
-    .skill-card-b {
-        padding: 15px;
-    }
-
-    .skill-icon-b {
-        font-size: 2rem;
-    }
+.tech-stack-modal .mono {
+    display: block;
+    font-size: 0.7rem;
+    margin-bottom: 14px;
 }
 
 .project-title,
@@ -557,14 +967,6 @@
     margin-bottom: 14px;
 }
 
-.project-archive-label {
-    border: 1px solid var(--color-glass-border);
-    border-radius: 4px;
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    padding: 2px 6px;
-}
-
 .project-links {
     display: flex;
     flex-wrap: wrap;
@@ -575,97 +977,138 @@
     font-size: 0.8rem;
 }
 
-.modal-body h4 {
-    color: var(--color-text);
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    margin: 0 0 8px;
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+
+@media (max-width: 1080px) {
+    .tools-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: auto;
+    }
+
+    .bento-slot--top-left {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .bento-slot--top-middle {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .bento-slot--bottom-left {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .bento-slot--bottom-middle {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    .bento-slot--right-span {
+        grid-column: 1 / span 2;
+        grid-row: 3;
+    }
 }
 
-.modal-evidence {
-    color: var(--color-text-muted);
-    line-height: 1.7;
-    margin: 0 0 24px;
-    padding-left: 20px;
-}
+@media (max-width: 992px) {
+    .projects-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+    }
 
-.modal-evidence li::marker {
-    color: var(--color-primary);
-}
-
-.tech-stack-modal .mono {
-    display: block;
-    font-size: 0.7rem;
-    margin-bottom: 14px;
-}
-
-.credentials-grid {
-    display: grid;
-    gap: 18px;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.credential-card {
-    background: var(--color-surface);
-    border: 1px solid var(--color-glass-border);
-    border-radius: 8px;
-    color: var(--color-text);
-    overflow: hidden;
-    text-decoration: none;
-}
-
-.credential-card:hover {
-    border-color: var(--color-primary);
-}
-
-.credential-card img {
-    aspect-ratio: 16 / 10;
-    display: block;
-    object-fit: cover;
-    width: 100%;
-}
-
-.credential-card > span {
-    display: block;
-    padding: 18px;
-}
-
-.credential-card svg {
-    color: var(--color-primary);
-    margin-right: 8px;
-}
-
-.credential-card strong,
-.credential-card small,
-.credential-card em {
-    display: block;
-}
-
-.credential-card small,
-.credential-card p {
-    color: var(--color-text-muted);
-    font-size: 0.8rem;
-    line-height: 1.5;
-}
-
-.credential-card p {
-    margin: 12px 0;
-}
-
-.credential-card em {
-    color: var(--color-primary);
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    font-style: normal;
+    .credentials-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 768px) {
-    .project-links .btn {
-        justify-content: center;
+    .tab-toggle {
         width: 100%;
+        overflow-x: auto;
+        padding-bottom: 6px;
+        scrollbar-width: none;
+    }
+
+    .tab-toggle::-webkit-scrollbar {
+        display: none;
+    }
+
+    .tab-btn {
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .tools-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .bento-slot--top-left,
+    .bento-slot--top-middle,
+    .bento-slot--bottom-left,
+    .bento-slot--bottom-middle,
+    .bento-slot--right-span {
+        grid-column: 1;
+        grid-row: auto;
+    }
+
+    .bento-card {
+        padding: 20px;
+        transform: none !important;
+    }
+
+    .bento-card-main {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .arsenal-tabs-bar {
+        grid-template-columns: 1fr;
     }
 
     .credentials-grid {
         grid-template-columns: 1fr;
+    }
+
+    .modal-body {
+        padding: 25px;
+    }
+
+    .modal-body h3 {
+        font-size: 1.8rem;
+    }
+
+    .modal-links {
+        flex-direction: column;
+    }
+
+    .modal-links .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .header-left h2 {
+        font-size: 2rem;
+    }
+
+    .projects-bg-text {
+        font-size: 8rem;
+        top: 5%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .bento-card,
+    .bento-card::before,
+    .bento-tag,
+    .project-card,
+    .credential-card {
+        transition: none !important;
+        transform: none !important;
     }
 }

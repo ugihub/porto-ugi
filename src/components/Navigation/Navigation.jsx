@@ -12,7 +12,7 @@ const Navigation = ({ onOpenCustomizer }) => {
         { id: 'hero', label: 'Home' },
         { id: 'about', label: 'About' },
         { id: 'projects', label: 'AI Systems' },
-        { id: 'playground', label: 'Playground' },
+{ id: 'playground', label: 'AI Lab' },
         { id: 'contact', label: 'Contact' }
     ]
 

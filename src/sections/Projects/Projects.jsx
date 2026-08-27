@@ -2,15 +2,16 @@ import { useRef } from 'react'
 import { AnimatePresence, motion, useInView } from 'framer-motion'
 import { FaCertificate, FaExternalLinkAlt } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
-import { archiveProjects, featuredProjects, getProjectsForTab, verifiedCredentials } from '../../data/portfolioContent.js'
+import { featuredProjects, toolGroups, verifiedCredentials } from '../../data/portfolioContent.js'
 import { clearSelectedProject, selectProject, setActiveTab } from '../../features/portfolio/portfolioSlice.js'
 import ProjectCard from './ProjectCard.jsx'
 import ProjectModal from './ProjectModal.jsx'
+import ToolGroupCard from './ToolGroupCard.jsx'
 import './Projects.css'
 
 const tabs = [
   { id: 'ai', label: 'AI SYSTEMS' },
-  { id: 'archive', label: 'ARCHIVE' },
+  { id: 'tools', label: 'TOOLS & SYSTEMS' },
   { id: 'credentials', label: 'CREDENTIALS' }
 ]
 
@@ -19,8 +20,7 @@ const Projects = () => {
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 })
   const dispatch = useDispatch()
   const { activeTab, selectedProjectId } = useSelector((state) => state.portfolio)
-  const selectedProject = [...featuredProjects, ...archiveProjects].find((project) => project.id === selectedProjectId)
-  const projects = activeTab === 'credentials' ? [] : getProjectsForTab(activeTab)
+  const selectedProject = featuredProjects.find((project) => project.id === selectedProjectId)
 
   return (
     <section id="projects" className="projects section" ref={sectionRef}>
@@ -53,17 +53,28 @@ const Projects = () => {
 
         <div className="projects-content">
           <AnimatePresence mode="wait">
-            {activeTab !== 'credentials' && (
+            {activeTab === 'ai' && (
               <motion.div
-                key={activeTab}
+                key="ai"
                 className="projects-grid"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
               >
-                {projects.map((project) => (
+                {featuredProjects.map((project) => (
                   <ProjectCard key={project.id} project={project} onSelect={(id) => dispatch(selectProject(id))} />
                 ))}
+              </motion.div>
+            )}
+            {activeTab === 'tools' && (
+              <motion.div
+                key="tools"
+                className="tools-grid"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+              >
+                {toolGroups.map((group, index) => <ToolGroupCard key={group.id} group={group} index={index} />)}
               </motion.div>
             )}
             {activeTab === 'credentials' && (

@@ -19,11 +19,16 @@ test('production browser bundle keeps the Mistral key server-side', () => {
 
   execFileSync(process.execPath, [path.join(root, 'node_modules', 'vite', 'bin', 'vite.js'), 'build'], {
     cwd: root,
-    env: { ...process.env, VITE_MISTRAL_API_KEY: browserOnlySecret },
+    env: {
+      ...process.env,
+      VITE_MISTRAL_API_KEY: browserOnlySecret,
+      VITE_ENABLE_WAREHOUSEFLOW_LIVE_DEMO: 'true'
+    },
     stdio: 'pipe'
   })
 
   const bundle = readJavaScriptFiles(path.join(root, 'dist')).join('\n')
   assert.doesNotMatch(bundle, new RegExp(browserOnlySecret))
   assert.doesNotMatch(bundle, /api\.mistral\.ai/)
+  assert.match(bundle, /api\/lab\/warehouseflow/)
 })

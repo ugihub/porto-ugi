@@ -1,6 +1,8 @@
 const certificateScout = new URL('../assets/Sertifikat1.jpg', import.meta.url).href
 const certificateOracle = new URL('../assets/Sertifikat2.png', import.meta.url).href
 const certificateWebinar = new URL('../assets/Sertifikat3.png', import.meta.url).href
+const certificateWebDevIOFest = new URL('../assets/Sertifikat4.png', import.meta.url).href
+const certificateWebDevGenesis = new URL('../assets/Sertifikat5.png', import.meta.url).href
 
 export const featuredProjects = [
   {
@@ -336,6 +338,24 @@ export const verifiedCredentials = [
     description: 'Webinar on IT professional careers in an era of rapid technological progress.',
     credentialUrl: 'https://drive.google.com/file/d/1IP_WyTstkMl29-Jr-10E-LlmU8HbZywW/view?usp=sharing',
     image: certificateWebinar
+  },
+  {
+    id: 'web-dev-competition',
+    title: '4th Place - Web Development Competition I/O Festival 2026',
+    organization: 'Universitas Tarumanegara',
+    year: '2026',
+    description: 'Won the I/O Festival 2026 Web Development Competition with a project entitled CuanLimbah.',
+    credentialUrl: 'https://drive.google.com/file/d/1kxJJAZmODtmLNlvr9e97zyBCOL7Wpt-G/view?usp=sharing',
+    image: certificateWebDevIOFest
+  },
+  {
+    id: 'web-dev-competition',
+    title: '3rd Place - Web Development Competition Genesis',
+    organization: 'Politeknik Enjinering Indorama',
+    year: '2026',
+    description: 'Awarded 3rd Place in the National Web Development Competition hosted by GENESIS on Politeknik Enjinering Indorama.',
+    credentialUrl: 'https://drive.google.com/file/d/15VupPnvGSRQET0oJfi1oM5RM6ovM54RX/view?usp=sharing',
+    image: certificateWebDevGenesis
   }
 ]
 

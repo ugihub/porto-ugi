@@ -1,3 +1,5 @@
+import { buildPortfolioSystemPrompt, getOutOfScopeResponse, isPortfolioQuestion } from './chatContext.js'
+
 const DEFAULT_MISTRAL_MODEL = 'mistral-medium-latest'
 const ALLOWED_MESSAGE_ROLES = new Set(['user', 'assistant'])
 const MAX_HISTORY_MESSAGES = 12
@@ -72,10 +74,20 @@ export default async function handler(req, res) {
     }
 
     try {
-        const { messages, systemPrompt } = readBody(req.body)
+        const { messages } = readBody(req.body)
 
         if (!messages || !Array.isArray(messages)) {
             return res.status(400).json({ error: 'Invalid messages array' })
+        }
+
+        const sanitizedMessages = toChatMessages(messages)
+        if (sanitizedMessages.length === 0) {
+            return res.status(400).json({ error: 'No valid chat messages provided' })
+        }
+
+        const latestUserMessage = [...sanitizedMessages].reverse().find((message) => message.role === 'user')?.content
+        if (latestUserMessage && !isPortfolioQuestion(latestUserMessage)) {
+            return res.status(200).json({ content: getOutOfScopeResponse(latestUserMessage) })
         }
 
         // --- 2. Call Mistral API securely ---
@@ -85,18 +97,11 @@ export default async function handler(req, res) {
             return res.status(500).json({ error: 'Server configuration error: Missing MISTRAL_API_KEY' })
         }
 
-        const sanitizedMessages = toChatMessages(messages)
-        if (sanitizedMessages.length === 0) {
-            return res.status(400).json({ error: 'No valid chat messages provided' })
-        }
-
         // Add the system prompt to the beginning of the messages array
         const mistralMessages = [
             {
                 role: 'system',
-                content: typeof systemPrompt === 'string' && systemPrompt.trim()
-                    ? systemPrompt
-                    : 'You are a concise portfolio assistant.'
+                content: buildPortfolioSystemPrompt()
             },
             ...sanitizedMessages
         ]

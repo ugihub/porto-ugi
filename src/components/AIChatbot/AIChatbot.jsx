@@ -3,12 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { RiRobot2Fill } from 'react-icons/ri'
 import { IoClose, IoSend } from 'react-icons/io5'
 import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope } from 'react-icons/fa'
+import { parseActions } from '../../features/chatbot/actions.js'
 import './AIChatbot.css'
 
 // Portfolio data context for the AI
 const PORTFOLIO_DATA = {
     owner: 'Ugi Sugiman R',
-    role: 'Software & Artificial Intelligence Engineer',
+    role: 'Applied AI Engineer',
     university: 'University of Logistics & International Business',
     location: 'Indonesia',
     status: 'Available for work',
@@ -17,28 +18,16 @@ const PORTFOLIO_DATA = {
     instagram: 'https://www.instagram.com/ugisr_/',
     cv: 'https://drive.google.com/file/d/1INKbJIG2jzJzQ4g0rr9rxVm2bw4xi3AX/view?usp=sharing',
     projects: [
-        { title: 'UIPiece', type: 'Web Development', tech: 'HTML, CSS, PHP', github: 'https://github.com/ugihub/uipiece' },
-        { title: 'InfinitySnake', type: 'Game Development', tech: 'Java, Greenfoot', github: 'https://github.com/ugihub/InfinitySnake' },
-        { title: 'Portfolio AI', type: 'Web Development', tech: 'HTML, CSS, JavaScript', github: 'https://github.com/ugihub/portofolioAI' },
-        { title: 'Finance Web', type: 'Web Application', tech: 'HTML, CSS, JavaScript', github: 'https://github.com/ugihub/financeWeb' },
-        { title: 'Maze Game', type: 'Game Development', tech: 'Alice3, Java', github: 'https://github.com/ugihub/MazeGameAlice3' },
-        { title: 'ToDo App', type: 'Web Application', tech: 'HTML, CSS, JavaScript', github: 'https://github.com/ugihub/ToDoApp' },
-        { title: 'Kinkoffie', type: 'Commercial Website', tech: 'HTML, CSS, JavaScript', live: 'https://kinkoffie.netlify.app' },
-        { title: 'Solana dApp', type: 'Blockchain Development', tech: 'Solana, JavaScript, Web3', github: 'https://github.com/ugihub/dapps-transaction-solana' },
+        { title: 'WarehouseFlow', type: 'Fine-tuned logistics model', tech: 'Gemma 3, GGUF, Hugging Face', model: 'https://huggingface.co/Ugisr/warehouseflow-gemma3-1b-it-gguf' },
+        { title: 'CuanLimbah', type: 'Applied product system', tech: 'React, API design, operational workflow' },
+        { title: 'MT5-trade', type: 'Trading automation research', tech: 'MetaTrader 5, Python, automation' },
     ],
     skills: [
-        { name: 'HTML', level: 90 }, { name: 'CSS', level: 85 }, { name: 'JavaScript', level: 80 },
-        { name: 'PHP', level: 75 }, { name: 'React', level: 70 }, { name: 'Node.js', level: 65 },
-        { name: 'Java', level: 70 }, { name: 'Solana', level: 50 }, { name: 'Framer Motion', level: 80 },
-        { name: 'GSAP', level: 75 },
-    ],
-    certificates: [
-        { title: 'Head of Secretary', org: 'Scout SMAN 6 Cirebon', year: '2023-2024' },
-        { title: 'Java Fundamentals', org: 'Oracle Academy', year: '2024' },
-        { title: 'IT Webinar', org: 'Berkemah ID', year: '2024' },
+        { name: 'LLM applications', level: 85 }, { name: 'RAG and retrieval', level: 80 }, { name: 'Agent reliability', level: 80 },
+        { name: 'Python', level: 80 }, { name: 'React', level: 78 }, { name: 'Model delivery', level: 75 },
     ],
     sections: ['hero', 'about', 'projects', 'playground', 'contact'],
-    playground: ['Live Code Editor', 'Algorithm Visualizer', 'Code Typing Test', 'AI Color Palette', 'Room Chat'],
+    lab: ['WarehouseFlow Tool-Call Console', 'RAG Retrieval Inspector', 'Agent Reliability Gate', 'Token and Cost Estimator'],
 }
 
 const SYSTEM_PROMPT = `You are a friendly AI assistant embedded in Ugi Sugiman R's portfolio website.
@@ -58,27 +47,24 @@ Available action tags:
 - [ACTION:navigate:contact] - Scroll to the Contact section
 - [ACTION:tab:projects] - Switch to Projects tab
 - [ACTION:tab:tools] - Switch to Tools/Skills tab
-- [ACTION:tab:certificates] - Switch to Certificates tab
-- [ACTION:ptab:editor] - Switch to Live Code Editor in Playground
-- [ACTION:ptab:visualizer] - Switch to Algorithm Visualizer in Playground
-- [ACTION:ptab:typing] - Switch to Code Typing Test in Playground
-- [ACTION:ptab:palette] - Switch to AI Color Palette in Playground
-- [ACTION:ptab:chat] - Switch to Room Chat in Playground
+- [ACTION:ptab:warehouse] - Switch to WarehouseFlow Tool-Call Console
+- [ACTION:ptab:retrieval] - Switch to RAG Retrieval Inspector
+- [ACTION:ptab:reliability] - Switch to Agent Reliability Gate
+- [ACTION:ptab:estimator] - Switch to Token and Cost Estimator
 - [ACTION:open:cv] - Open CV download link
 
 ## RULES
 1. When someone asks about projects, navigate to the projects section AND switch to the projects tab.
 2. When someone asks about skills/tools, navigate to projects section AND switch to the tools tab.
-3. When someone asks about certificates/awards, navigate to projects section AND switch to the certificates tab.
+3. When someone asks about applied AI systems, navigate to projects section AND switch to the projects tab.
 4. When someone asks about Ugi/who he is, navigate to the about section.
 5. When someone wants to contact/hire, navigate to the contact section.
 6. When someone asks for CV/resume, trigger open cv action.
-7. When someone asks about playground/games/tools, navigate to the playground section.
-8. When someone asks about code editor or running code, navigate to playground AND switch to editor tab.
-9. When someone asks about algorithms or sorting, navigate to playground AND switch to visualizer tab.
-10. When someone asks about typing test or WPM, navigate to playground AND switch to typing tab.
-11. When someone asks about color palette or colors, navigate to playground AND switch to palette tab.
-12. When someone asks about chat room, navigate to playground AND switch to chat tab.
+7. When someone asks about the AI Lab, navigate to the playground section.
+8. When someone asks about WarehouseFlow or tool calling, navigate to playground AND switch to warehouse tab.
+9. When someone asks about RAG or retrieval, navigate to playground AND switch to retrieval tab.
+10. When someone asks about reliability or evidence gates, navigate to playground AND switch to reliability tab.
+11. When someone asks about token estimates or API costs, navigate to playground AND switch to estimator tab.
 13. Always provide a helpful text response BEFORE the action tags.
 14. You can use multiple action tags in one response.
 15. Keep responses concise, friendly, and professional.
@@ -91,19 +77,6 @@ const QUICK_ACTIONS = [
     { label: '🛠️ Skills', message: 'Apa saja skill yang dimiliki?' },
     { label: '📧 Contact', message: 'Bagaimana cara menghubungi Ugi?' },
 ]
-
-// Parse action tags from AI response
-const parseActions = (text) => {
-    const actionRegex = /\[ACTION:(\w+):(\w+)\]/g
-    const actions = []
-    let match
-    while ((match = actionRegex.exec(text)) !== null) {
-        actions.push({ type: match[1], target: match[2] })
-    }
-    // Remove action tags from visible text
-    const cleanText = text.replace(/\[ACTION:\w+:\w+\]/g, '').trim()
-    return { cleanText, actions }
-}
 
 const escapeHtml = (value) => String(value)
     .replace(/&/g, '&amp;')
@@ -156,11 +129,15 @@ const executeActions = (actions) => {
                     break
                 }
                 case 'ptab': {
-                    // Find and click the playground tab button
+                    const labTargets = {
+                        warehouse: 'warehouseflow',
+                        retrieval: 'rag inspector',
+                        reliability: 'reliability gate',
+                        estimator: 'token estimator'
+                    }
                     const playgroundTabs = document.querySelectorAll('.playground-tab')
                     playgroundTabs.forEach(btn => {
-                        const tabLabel = btn.querySelector('.tab-label')
-                        if (tabLabel && tabLabel.textContent.toLowerCase().includes(action.target)) {
+                        if (btn.textContent.toLowerCase().includes(labTargets[action.target] || action.target)) {
                             btn.click()
                         }
                     })

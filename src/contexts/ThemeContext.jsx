@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react'
 import { supabase } from '../lib/supabase'
+import { getThemeMode } from './themeMode'
 
 const defaultTheme = {
     colors: {
@@ -39,6 +40,7 @@ export function ThemeProvider({ children }) {
         root.style.setProperty('--color-surface', theme.colors.surface)
         root.style.setProperty('--color-text', theme.colors.text)
         root.style.setProperty('--color-text-muted', theme.colors.muted)
+        root.dataset.themeMode = getThemeMode(theme.colors.background)
         root.style.setProperty('--font-heading', theme.fonts.heading)
         root.style.setProperty('--font-body', theme.fonts.body)
         root.style.setProperty('--animation-speed', theme.animationSpeed)

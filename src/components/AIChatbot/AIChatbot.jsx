@@ -4,6 +4,7 @@ import { RiRobot2Fill } from 'react-icons/ri'
 import { IoClose, IoSend } from 'react-icons/io5'
 import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope } from 'react-icons/fa'
 import { parseActions } from '../../features/chatbot/actions.js'
+import { formatChatMarkdown } from '../../features/chatbot/markdown.js'
 import './AIChatbot.css'
 
 // Portfolio data context for the AI
@@ -30,60 +31,12 @@ const PORTFOLIO_DATA = {
     lab: ['WarehouseFlow Tool-Call Console', 'RAG Retrieval Inspector', 'Agent Reliability Gate', 'Token and Cost Estimator'],
 }
 
-const SYSTEM_PROMPT = `You are a friendly AI assistant embedded in Ugi Sugiman R's portfolio website.
-You have FULL CONTROL over the website and can navigate users to different sections.
-
-## PORTFOLIO DATA
-${JSON.stringify(PORTFOLIO_DATA, null, 2)}
-
-## AVAILABLE ACTIONS
-You can trigger website actions by including special tags in your response. The tags will be automatically parsed and executed. Place them at the END of your message.
-
-Available action tags:
-- [ACTION:navigate:hero] - Scroll to the Hero/Home section
-- [ACTION:navigate:about] - Scroll to the About section
-- [ACTION:navigate:projects] - Scroll to the Projects section
-- [ACTION:navigate:playground] - Scroll to the Playground section
-- [ACTION:navigate:contact] - Scroll to the Contact section
-- [ACTION:tab:projects] - Switch to Projects tab
-- [ACTION:tab:tools] - Switch to Tools/Skills tab
-- [ACTION:ptab:warehouse] - Switch to WarehouseFlow Tool-Call Console
-- [ACTION:ptab:retrieval] - Switch to RAG Retrieval Inspector
-- [ACTION:ptab:reliability] - Switch to Agent Reliability Gate
-- [ACTION:ptab:estimator] - Switch to Token and Cost Estimator
-- [ACTION:open:cv] - Open CV download link
-
-## RULES
-1. When someone asks about projects, navigate to the projects section AND switch to the projects tab.
-2. When someone asks about skills/tools, navigate to projects section AND switch to the tools tab.
-3. When someone asks about applied AI systems, navigate to projects section AND switch to the projects tab.
-4. When someone asks about Ugi/who he is, navigate to the about section.
-5. When someone wants to contact/hire, navigate to the contact section.
-6. When someone asks for CV/resume, trigger open cv action.
-7. When someone asks about the AI Lab, navigate to the playground section.
-8. When someone asks about WarehouseFlow or tool calling, navigate to playground AND switch to warehouse tab.
-9. When someone asks about RAG or retrieval, navigate to playground AND switch to retrieval tab.
-10. When someone asks about reliability or evidence gates, navigate to playground AND switch to reliability tab.
-11. When someone asks about token estimates or API costs, navigate to playground AND switch to estimator tab.
-13. Always provide a helpful text response BEFORE the action tags.
-14. You can use multiple action tags in one response.
-15. Keep responses concise, friendly, and professional.
-16. Respond in the same language the user uses (Indonesian or English).
-17. Do NOT show the action tags as visible text — just include them naturally at the end.`
-
 const QUICK_ACTIONS = [
     { label: '👤 About Ugi', message: 'Siapa Ugi?' },
     { label: '🚀 Projects', message: 'Apa saja proyek yang pernah dikerjakan?' },
     { label: '🛠️ Skills', message: 'Apa saja skill yang dimiliki?' },
     { label: '📧 Contact', message: 'Bagaimana cara menghubungi Ugi?' },
 ]
-
-const escapeHtml = (value) => String(value)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;')
 
 const readJsonResponse = async (response) => {
     const contentType = response.headers.get('content-type') || ''
@@ -94,15 +47,6 @@ const readJsonResponse = async (response) => {
     return {
         error: 'Chat endpoint returned a non-JSON response.'
     }
-}
-
-// Format markdown to HTML for chat messages
-const formatMarkdown = (text) => {
-    return escapeHtml(text)
-        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')     // **bold**
-        .replace(/\*(.+?)\*/g, '<em>$1</em>')                  // *italic*
-        .replace(/`(.+?)`/g, '<code>$1</code>')                // `code`
-        .replace(/\n/g, '<br />')                               // newlines
 }
 
 // Execute website actions
@@ -241,8 +185,7 @@ const AIChatbot = () => {
                 },
                 credentials: 'include', // Important to send cookies
                 body: JSON.stringify({
-                    messages: newMessages,
-                    systemPrompt: SYSTEM_PROMPT
+                    messages: newMessages
                 }),
             })
 
@@ -421,7 +364,7 @@ const AIChatbot = () => {
                                 <div
                                     key={idx}
                                     className={`chat-message ${msg.role}`}
-                                    dangerouslySetInnerHTML={{ __html: formatMarkdown(msg.content) }}
+                                    dangerouslySetInnerHTML={{ __html: formatChatMarkdown(msg.content) }}
                                 />
                             ))}
 

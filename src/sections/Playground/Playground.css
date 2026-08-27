@@ -41,6 +41,36 @@
   overflow: hidden;
 }
 
+/* Background Large Watermark Typography matching portfolio aesthetic */
+.playground-bg-text {
+  position: absolute;
+  top: 50px;
+  left: 20px;
+  right: auto;
+  font-family: var(--font-display);
+  font-size: clamp(8rem, 24vw, 22rem);
+  font-weight: 900;
+  letter-spacing: -0.06em;
+  color: var(--color-text-primary);
+  opacity: 0.032;
+  pointer-events: none;
+  z-index: 0;
+  white-space: nowrap;
+  line-height: 0.85;
+  user-select: none;
+}
+
+.playground-ambient-glow {
+  position: absolute;
+  top: 20px;
+  left: 5%;
+  width: 320px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(0, 229, 255, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
 /* Header Structure */
 .playground-header {
   display: flex;
@@ -48,13 +78,40 @@
   align-items: flex-end;
   gap: 32px;
   margin-bottom: 28px;
+  position: relative;
+  z-index: 2;
 }
 
-.playground-header h2 {
-  font-size: clamp(2.6rem, 6vw, 4.8rem);
+.playground-header .header-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Specific Two-Row Headline Typography matching original aesthetic */
+.playground-title {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-display);
+  font-size: clamp(2.35rem, 5.5vw, 4.8rem);
   font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 0.92;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  margin-top: 8px;
+  text-transform: uppercase;
+}
+
+.playground-title .title-row-white {
+  color: #ffffff;
+  display: block;
+}
+
+.playground-title .title-row-gradient {
+  display: block;
+  background: linear-gradient(90deg, #ff3d00 0%, #ff6d00 35%, #00e5ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .playground-header-info {

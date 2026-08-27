@@ -24,6 +24,10 @@ const Projects = () => {
 
   return (
     <section className="projects section" id="projects" ref={sectionRef}>
+      {/* Background Watermark & Ambient Elements matching original design */}
+      <div className="projects-bg-text" aria-hidden="true">FOLIO</div>
+      <div className="projects-ambient-glow" aria-hidden="true" />
+
       <div className="container">
         <motion.div
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -33,8 +37,18 @@ const Projects = () => {
         >
           <div className="header-left">
             <span className="section-tag">Portfolio</span>
-            <h2>AI<br /><span className="text-gradient">SYSTEMS</span></h2>
+            <h2 className="projects-title">
+              <span className="title-row-white">AI</span>
+              <span className="title-row-gradient text-gradient">SYSTEMS</span>
+            </h2>
           </div>
+
+          <div className="header-center-deco" aria-hidden="true">
+            <span className="header-glow-ring" />
+            <span className="header-constellation-dot dot-orange" />
+            <span className="header-constellation-dot dot-cyan" />
+          </div>
+
           <div aria-label="Portfolio categories" className="tab-toggle" role="tablist">
             {tabs.map((tab) => (
               <button

@@ -60,6 +60,10 @@ const Playground = () => {
 
   return (
     <section className="playground section" id="playground" ref={sectionRef}>
+      {/* Background Watermark & Ambient Glow matching portfolio aesthetic */}
+      <div className="playground-bg-text" aria-hidden="true">LABS</div>
+      <div className="playground-ambient-glow" aria-hidden="true" />
+
       <div className="container">
         <motion.header
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -67,9 +71,12 @@ const Playground = () => {
           initial={{ opacity: 0, y: 32 }}
           transition={{ duration: 0.55 }}
         >
-          <div>
+          <div className="header-left">
             <span className="section-tag">Applied AI</span>
-            <h2>AI<br /><span className="text-gradient">LAB</span></h2>
+            <h2 className="playground-title">
+              <span className="title-row-white">AI</span>
+              <span className="title-row-gradient text-gradient">LABORATORY</span>
+            </h2>
           </div>
           <div className="playground-header-info">
             <p className="playground-desc mono">
